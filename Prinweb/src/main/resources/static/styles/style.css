@@ -1,0 +1,251 @@
+      * {box-sizing: border-box}
+
+      body {font-family: 'Varela Round', sans-serif;
+
+      }
+      li{
+          margin-bottom: 10px;
+      }
+
+      th{
+          background-color: #449d44!important;
+
+      }
+      .logo{
+          padding-top: 5px;
+          padding-bottom: 5px;
+          float: left;
+          height: 50px!important;
+      }
+      .whiteicon{
+          background-color: #FFFFFF!important;
+      }
+
+
+      .btn{
+        border-radius: 15px!important;
+        padding-right: 20px!important;
+        padding-left: 20px!important;
+      }
+      h1, h2, h3{
+        font-weight: bold!important;
+        color: #5C84D7!important;
+
+      }
+
+      .nav-elements{
+
+      }
+
+      .text {
+        color: #f2f2f2;
+        font-size: 15px;
+        padding: 8px 12px;
+        position: absolute;
+        bottom: 8px;
+        width: 100%;
+        text-align: center;
+      }
+
+
+      .numbertext {
+        color: #f2f2f2;
+        font-size: 12px;
+        padding: 8px 12px;
+        position: absolute;
+        top: 0;
+      }
+
+
+      .inline{
+          display: inline-block;
+
+      }
+
+
+
+      .navbar {
+        border-radius: 5px!important;
+          margin-bottom: 0px!important;
+      }
+
+      .searcher{
+        margin-top: 10px;
+        margin-bottom:10px;
+        float: right;
+      }
+      .pagebox{
+      
+      }
+      .right{
+          float: right;
+      }
+      .menu{
+        background-color: #222;
+        border-radius: 10px;
+       /* position: fixed!important;*/
+      }
+      .navbar-inverse{
+         background-color: #CCC!important;
+
+      }
+      .center{
+        display: block;
+        margin: auto;
+
+      }
+      .titlemargin{
+
+        margin-bottom: 30px;
+      }
+       .textcenter{
+        text-align: center!important;
+      }
+
+
+
+
+      .navbar-nav li a{
+        color:#FFFFFF;
+        
+      }
+      .navbar-nav li a:hover{
+        color: #337f93!important;
+        background-color: transparent!important;
+
+      }
+      .mySlides .imagecontent{
+        margin-top: 50px;
+        max-width: 150px!important;
+      }
+      .greycontainer{
+        background-color: #efe;
+        color: #000;
+        padding-top: 30px;
+        padding-bottom: 30px;
+      }
+      .fadebackground{
+          background-color: rgba(0,0,0,0.7);
+          margin-top: 0px!important;
+          padding: 50px;
+      }
+      .whitecontainer{
+        background-color: #FFF;
+        color: #000;
+        padding-bottom: 30px;
+        padding-top: 30px;
+       
+      }
+      .footer{
+        background-color: #383838;
+        padding:20px;
+        color: #FFF;
+      }
+      .footer a, footer p{
+          color: #efe!important;
+      }
+      .vertical-center{
+        vertical-align: center!important;
+      }    
+      .screen-readers {
+          padding: 20px;
+          background-color: #28A745;
+          height: 300px;
+          border-radius: 5px;
+      }
+
+      .screen-readers a{
+          color: #000000;
+      }
+      .screen-readers p{
+          color: #FFFFFF;
+      }
+
+      .register-body{
+          background: transparent;
+          color: #FFFFFF!important;
+          padding: 0 120px 0px 120px;
+      }
+      .dialog-width{
+          width: 100%!important;
+      }
+      .modal-header{
+          padding: 0px!important;
+      }
+      .modal-content{
+          border-radius: 20px!important;
+          padding: 20px!important;
+      }
+      .tiny-margin-rl{
+          margin-left: 10px;
+          margin-right: 10px;
+      }
+      .tiny-margin-tb{
+          margin-top: 10px;
+          margin-bottom: 10px;
+      }
+      .tiny-margin-t{
+          margin-top: 20px;
+      }
+      .margin-t{
+          margin-top: 50px;
+      }
+
+      .tiny-margin-b{
+          margin-bottom: 20px;
+      }
+
+      .error-message{
+          color:#FF0000;
+          font-size: 14px;
+      }
+      .invisible {
+          display: none;
+      }
+
+      .valid {
+          background-color: #28a745!important;
+      }
+
+      .sistemes {
+          width: 50px;
+      }
+      table{
+          font-size: 12px!important;
+      }
+      .lector-container {
+          border-radius: 5px;
+          padding: 50px;
+          border-width: 0.2rem;
+          border: solid #f7f7f9;
+      }
+      #metriques td{
+          text-align: center;
+      }
+      .none-style {
+          list-style-type: none;
+      }
+      .no-padding{
+          padding: 0px;
+      }
+      .no-padding-left{
+          padding-left: 0px!important;
+      }
+      .no-padding-right{
+          padding-right: 0px!important;
+      }
+      @media only screen and (max-width: 899px) {
+          .max-height{
+              min-height: 350px;
+          }
+          .mySlides .slidecontent{
+              position: absolute;
+              top: 50px;
+              margin-left: 50px;
+
+          }
+          .searcher{
+              float: left;
+          }
+      }
+

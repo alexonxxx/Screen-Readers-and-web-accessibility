@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html  lang="ca" xmlns:th="http://www.thymeleaf.org">
+<head >
+    <!-- Basic -->
+    <meta charset="utf-8">
+    <title>Prinweb | Login</title>
+
+
+    <link rel="alternate" hreflang="es"/>
+    <!-- Page Description and Author -->
+    <meta name="description" content="">
+    <meta name="keywords" content="screen readers, jaws, dolphin, supernova magnifier, read&write, nvda,  accesibilidad, usabilidad">
+    <meta name="Àlex Balló Vergés" content="Screen Readers">
+    <!--<link rel="apple-touch-icon" sizes="57x57" href="/apple-icon-57x57.png">
+    <link rel="apple-touch-icon" sizes="60x60" href="/apple-icon-60x60.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="/apple-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="/apple-icon-76x76.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="/apple-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="/apple-icon-120x120.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="/apple-icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="/apple-icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-icon-180x180.png">
+    <link rel="icon" type="image/png" sizes="192x192"  href="/android-icon-192x192.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+
+    <link rel="stylesheet" href="css/font-awesome.min.css">-->
+    <!-- Main CSS -->
+    <link rel="stylesheet" th:href="@{/styles/style.css}">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+<body >
+<div class=" pagebox">
+    <div class=" navbar menu">
+        <nav class="navbar-expand-lg navbar nav-elements">
+            <a href="/"><img class="img-responsive  logo" alt="Logo principiosweb" th:src="@{/images/prinweblogo.png}"></a>
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                <span class="icon-bar whiteicon"></span>
+                <span class="icon-bar whiteicon"></span>
+                <span class="icon-bar whiteicon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="myNavbar">
+                <ul class="nav navbar-nav">
+                    <li ><a href="/">Home</a></li>
+                    <li class="dropdown">
+                        <a class="dropdown-toggle" href="#" role="button" id="listaLectoresPantalla" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Lectores de pantalla<span class="caret"></span>
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="listaLectoresPantalla">
+                            <li class="dropdown-item" th:each="lector : ${listLectors}" >
+                                <a class="dropdown-item" th:text="${lector.nomLector}" th:href="@{'/lector-pantalla/'+${lector.nomLector}}"></a>
+                            </li>
+                        </ul>
+
+                    </li>
+                    <li class="dropdown">
+                        <a class="dropdown-toggle" href="#" role="button" id="comparativa" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Comparativa<span class="caret"></span>
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="comparativa">
+                            <li class="dropdown-item" >
+                                <a class="dropdown-item" th:href="@{/texto-audio}">Texto a audio</a>
+                            </li>
+                            <li class="dropdown-item" >
+                                <a class="dropdown-item" th:href="@{/visualizacion}">Visualización</a>
+                            </li>
+                            <li class="dropdown-item" >
+                                <a class="dropdown-item" th:href="@{/otras-funcionalidades}">Otras funcionalidades</a>
+                            </li>
+
+                        </ul>
+
+                    </li>
+
+                    <li><a th:href="@{/accesibilidad}">Accesibilidad web</a></li>
+                    <li><a th:href="@{/contacto}">Contacto</a></li>
+                </ul>
+
+                <form class="form-inline searcher my-2 my-md-0">
+                    <input class="form-control" type="text" placeholder="Search">
+                    <div class="inline" >
+                        <a class="tiny-margin-rl btn btn-success"th:href="@{/login}">
+                            Sign In</a>
+                        <a class="tiny-margin-rl btn btn-success" th:href="@{/registration}">
+                            Sign Up</a>
+                    </div>
+
+                </form>
+            </div>
+
+        </nav>
+
+    </div>
+    <div class="fadebackground" aria-labelledby="signin">
+        <div class="modal-dialog modal-dialog-centered" >
+            <div class="modal-content" >
+                <div class="modal-header">
+                    <h1 id="signin" class="text-center">Sign In</h1>
+                </div>
+                <div class="modal-body">
+                    <form name="login" action="login" method="POST" th:object="${usuari}">
+                        <div class="form-group">
+                            <label  for="nomUsuari">Nombre usuario</label>
+                            <input id="nomUsuari" type='text' class="form-control input-lg" name='username' required  />
+                        </div>
+                        <div class="form-group">
+                            <label for="password">Contraseña</label>
+                            <input type='password' id="password" class="form-control input-lg" required  name='password' />
+                        </div>
+
+                        <input name="submit" class="btn btn-block btn-lg btn-success" type="submit" value="Sign in"/>
+
+                        <div  id="messageErrorCont"class="alert alert-danger tiny-margin-t invisible">
+                            <p id="messageError" th:text="${errorMessage}"> </p>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+</div>
+    <footer class="footer">
+        <div class="row footercont">
+            <div class="col-md-4">
+                <h4>Contacto</h4>
+                <hr/>
+                <p>E-mail: aballo@edu.tecnocampus.cat</p>
+                <p>Teléfono: 619261938</p>
+            </div>
+            <div class=" col-md-4">
+                <h4>Lectores de pantalla</h4>
+                <hr/>
+                <ul class="list-unstyled">
+                    <li th:each="lector : ${listLectors}" >
+                        <a class="dropdown-item" th:text="${lector.nomLector}" th:href="@{'/lector-pantalla/'+${lector.nomLector}}"></a>
+                    </li>
+                </ul>
+            </div>
+            <div class=" col-md-4">
+                <h4>Páginas</h4>
+                <hr/>
+                <ul class="list-unstyled">
+                    <li>
+                        <a class="dropdown-item" th:href="@{/texto-audio}">Texto a audio</a>
+                    </li>
+                    <li >
+                        <a class="dropdown-item" th:href="@{/visualizacion}">Visualización</a>
+                    </li>
+                    <li>
+                        <a class="dropdown-item" th:href="@{/otras-funcionalidades}">Otras funcionalidades</a>
+                    </li>
+                    <li><a th:href="@{/accesibilidad}">Accesibilidad web</a></li>
+                    <li><a th:href="@{/contacto}">Contacto</a></li>
+                </ul>
+            </div>
+        </div>
+    </footer>
+</div>
+
+<script th:src="@{/js/errorMessage.js}"></script>
+</body>
+</html>

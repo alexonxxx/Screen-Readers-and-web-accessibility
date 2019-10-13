@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="ca"  xmlns:th="http://www.thymeleaf.org">
+<head>
+    <!-- Basic -->
+    <meta charset="utf-8">
+    <title>Prinweb | Accesibilidad web</title>
+
+
+    <link rel="alternate" hreflang="es"/>
+    <!-- Page Description and Author -->
+    <meta name="description" content="">
+    <meta name="keywords" content="screen readers, jaws, dolphin, supernova magnifier, read&write, nvda,  accesibilidad, usabilidad">
+    <meta name="Àlex Balló Vergés" content="Screen Readers">
+    <!--<link rel="apple-touch-icon" sizes="57x57" href="/apple-icon-57x57.png">
+    <link rel="apple-touch-icon" sizes="60x60" href="/apple-icon-60x60.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="/apple-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="/apple-icon-76x76.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="/apple-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="/apple-icon-120x120.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="/apple-icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="/apple-icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-icon-180x180.png">
+    <link rel="icon" type="image/png" sizes="192x192"  href="/android-icon-192x192.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+
+    <link rel="stylesheet" href="css/font-awesome.min.css">-->
+    <!-- Main CSS -->
+    <link rel="stylesheet" th:href="@{/styles/style.css}">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+<body>
+<div class=" pagebox">
+    <div class=" navbar menu">
+        <nav class="navbar-expand-lg navbar nav-elements">
+            <a href="/"><img class="img-responsive  logo" alt="Logo principiosweb" th:src="@{/images/prinweblogo.png}"></a>
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                <span class="icon-bar whiteicon"></span>
+                <span class="icon-bar whiteicon"></span>
+                <span class="icon-bar whiteicon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="myNavbar">
+                <ul class="nav navbar-nav">
+                    <li ><a href="/">Home</a></li>
+                    <li class="dropdown">
+                        <a class="dropdown-toggle" href="#" role="button" id="listaLectoresPantalla" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Lectores de pantalla<span class="caret"></span>
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="listaLectoresPantalla">
+                            <li class="dropdown-item" th:each="lector : ${listLectors}" >
+                                <a class="dropdown-item" th:text="${lector.nomLector}" th:href="@{'/lector-pantalla/'+${lector.nomLector}}"></a>
+                            </li>
+                        </ul>
+
+                    </li>
+                    <li class="dropdown">
+                        <a class="dropdown-toggle" href="#" role="button" id="comparativa" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Comparativa<span class="caret"></span>
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="comparativa">
+                            <li class="dropdown-item" >
+                                <a class="dropdown-item" th:href="@{/texto-audio}">Texto a audio</a>
+                            </li>
+                            <li class="dropdown-item" >
+                                <a class="dropdown-item" th:href="@{/visualizacion}">Visualización</a>
+                            </li>
+                            <li class="dropdown-item" >
+                                <a class="dropdown-item" th:href="@{/otras-funcionalidades}">Otras funcionalidades</a>
+                            </li>
+
+                        </ul>
+
+                    </li>
+
+                    <li><a th:href="@{/accesibilidad}">Accesibilidad web</a></li>
+                    <li><a th:href="@{/contacto}">Contacto</a></li>
+                </ul>
+
+                <form class="form-inline searcher my-2 my-md-0">
+                    <input class="form-control" type="text" placeholder="Search">
+                    <div class="inline" th:if="${usuari == null}">
+                        <a class="tiny-margin-rl btn btn-success"th:href="@{/login}">
+                            Sign In</a>
+                        <a class="tiny-margin-rl btn btn-success" th:href="@{/registration}">
+                            Sign Up</a>
+                    </div>
+                    <div th:unless="${usuari == null}" class="btn-group tiny-margin-rl" th:object="${usuari}">
+                        <button class=" btn btn-secondary dropdown-toggle" href="#" role="button" id="nombreUsuario" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <i class="fas fa-user"></i> <span th:text="*{nomUsuari}"></span>
+                        </button>
+                        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="nombreUsuario">
+                            <li class="dropdown-item">
+                                <a class="dropdown-item" th:href="@{/gestion-lectores}">Gestión lectores</a>
+                            </li>
+                            <li class="dropdown-item">
+                                <a class="dropdown-item" th:href="@{/gestion-evaluaciones}">Gestión evaluaciones</a>
+                            </li>
+                            <li class="dropdown-item">
+                                <a class="dropdown-item" th:href="@{/logout}"> <i class="fas fa-power-off"></i> <span>Log out</span></a>
+                            </li>
+                        </div>
+
+                    </div>
+                </form>
+            </div>
+
+        </nav>
+
+    </div>
+
+
+    <div class="whitecontainer" >
+        <div class="container" aria-labelledby="accessibilitatweb">
+            <div class="row">
+                <div class="titlemargin">
+                    <h2 id="accessibilitatweb">Accesibilidad web</h2>
+                </div>
+
+                <div class="col-md-8 col-sm-12">
+                    <p>Los lectores de pantalla son una ayuda externa necesaria a utilizar, pero no es la única manera de poder hacer la información más accesible en internet, ya que hay productos que son diseñados para que puedan ser accesibles y utilizadas por el mayor número de personas, indiferentemente de las limitaciones de los usuarios; este concepto se podría decir que es el objetivo de la accesibilidad web.</p>
+                    <p>Uno de los principales problemas que cometen los diseñadores es ocultar el contenido mediante CSS. Mientras que los usuarios que no tienen problemas de visión no notan que esté en la página, los usuarios que si tienen, no se darán cuenta de que el contenido es invisible.</p>
+                </div>
+                <div class="align-middle col-md-4 col-sm-12">
+                    <img class="img-responsive" alt="Imagen accesibilidad" th:src="@{/images/accessibilitatImage.jpg}" >
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <div class="greycontainer" >
+        <div class="container" aria-labelledby="principisaccessibilitat">
+            <div class="row">
+                <div class="titlemargin">
+                    <h2 id="principisaccessibilitat">Principos de accesibilidad</h2>
+                </div>
+                <p>Algunos de estos principios más conocidos a la hora de hacer un diseño accesible son:</p>
+              <ul>
+                  <li><strong>Proporcionar un texto alternativo apropiado:</strong> las personas ciegas que utilizan un lector de pantalla puede ser muy útil saber la información que contiene.</li>
+                  <li><strong>Estructurar apropiadamente el contenido:</strong> los títulos, las listas, tablas y otros elementos estructurales facilitan la navegación por teclado y proporcionan una estructura en la página web.</li>
+                  <li><strong>Proporcionar encabezados por las tablas:</strong> a la hora de organizar los datos de una tabla el uso de encabezados facilita la comprensión de los datos sobre todo si se utiliza lectores de pantallas.</li>
+                  <li><strong>Etiquetas en los formularios:</strong> añadir etiquetas a los diferentes campos del formulario facilita su desplazamiento.</li>
+                  <li><strong>Atributo <i>required</i>:</strong> añadir el atributo requerido es una manera de poder informar al usuario si el campo requiere ser rellenado o no.</li>
+                  <li><strong>Subtitular o proporcionar transcripciones para vídeos y audios</strong></li>
+                  <li><strong>Accesibilidad de contenido que no es HTML:</strong> si el contenido de los archivos añadidos (Pdf, Word, Power Point) no es muy accesible, pasar el contenido en HTML o buscar otra alternativa.</li>
+                  <li><strong>No confiar sólo con los colores para transmitir significado:</strong> por la gente con problemas de visión o que utiliza lectores de pantalla, el significado será el mismo que el resto de información donde no se modifique el color</li>
+                  <li><strong>Hacer JavaScript accesible:</strong> hacer que los controladores de los eventos sean independientes de dispositivos (ej: no requieren el uso del ratón).</li>
+                  <li><strong>Separar CSS de contenido:</strong> proporciona más flexibilidad y accesibilidad al contenido.</li>
+              </ul>
+        </div>
+    </div>
+
+        <footer class="footer">
+            <div class="row footercont">
+                <div class="col-md-4">
+                    <h4>Contacto</h4>
+                    <hr/>
+                    <p>E-mail: aballo@edu.tecnocampus.cat</p>
+                    <p>Teléfono: 619261938</p>
+                </div>
+                <div class=" col-md-4">
+                    <h4>Lectores de pantalla</h4>
+                    <hr/>
+                    <ul class="list-unstyled">
+                        <li th:each="lector : ${listLectors}" >
+                            <a class="dropdown-item" th:text="${lector.nomLector}" th:href="@{'/lector-pantalla/'+${lector.nomLector}}"></a>
+                        </li>
+                    </ul>
+                </div>
+                <div class=" col-md-4">
+                    <h4>Páginas</h4>
+                    <hr/>
+                    <ul class="list-unstyled">
+                        <li>
+                            <a class="dropdown-item" th:href="@{/texto-audio}">Texto a audio</a>
+                        </li>
+                        <li >
+                            <a class="dropdown-item" th:href="@{/visualizacion}">Visualización</a>
+                        </li>
+                        <li>
+                            <a class="dropdown-item" th:href="@{/otras-funcionalidades}">Otras funcionalidades</a>
+                        </li>
+                        <li><a th:href="@{/accesibilidad}">Accesibilidad web</a></li>
+                        <li><a th:href="@{/contacto}">Contacto</a></li>
+                    </ul>
+                </div>
+            </div>
+        </footer>
+</div>
+
+</body>
+
+</html>
